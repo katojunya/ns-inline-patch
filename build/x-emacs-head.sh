@@ -1,5 +1,7 @@
 #!/bin/sh
 
+NS_INLINE_DIR=$(pwd)
+
 # LIBXML2 for Catalina
 MACSDK=`xcrun --show-sdk-path`
 export LIBXML2_CFLAGS="-I${MACSDK}/usr/include/libxml2"
@@ -23,7 +25,7 @@ export CFLAGS="$CFLAGS -I${BREW_LIBGCCJIT_PREFIX}/include"
 export LIBRARY_PATH=${BREW_PREFIX}/lib/gcc/current
 
 WORKING_DIR="${HOME}/Desktop"
-CORES=4
+CORES=8
 NATIVE="no"
 BRANCH=master
 while getopts d:j:ngb: opt
@@ -62,12 +64,14 @@ fi
 echo "---------------------------------"
 
 # inline-patch
-git clone --depth 1 https://github.com/takaxp/ns-inline-patch.git
+# git clone --depth 1 https://github.com/takaxp/ns-inline-patch.git
 
 cd emacs
 git checkout -f ${BRANCH}
 
-if [ "${BRANCH}" = "emacs-29" ]; then
+if [ "${BRANCH}" = "emacs-30" ]; then
+    patch -p1 < $NS_INLINE_DIR/emacs-30.0-inline.patch
+elif [ "${BRANCH}" = "emacs-29" ]; then
     patch -p1 < ../ns-inline-patch/emacs-29.1-inline.patch
 elif [ "${BRANCH}" = "emacs-28" ]; then
     patch -p1 < ../ns-inline-patch/emacs-28.1-inline.patch

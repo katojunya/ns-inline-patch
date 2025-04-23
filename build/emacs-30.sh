@@ -1,6 +1,6 @@
 #!/bin/sh
 
-VERSION=29.4
+VERSION=30.1
 
 # LIBXML2 for Catalina
 MACSDK=`xcrun --show-sdk-path`
@@ -54,13 +54,17 @@ echo "NativeComp: ${NATIVE}"
 echo "Cores: ${CORES}"
 echo "PATCH: ${PATCH}"
 
+# if [ ! -f emacs-$VERSION.tar.gz ]; then
+#     curl -LO ftp://ftp.gnu.org/gnu/emacs/emacs-$VERSION.tar.gz
+# fi
 curl -LO ftp://ftp.gnu.org/gnu/emacs/emacs-$VERSION.tar.gz
+
+rm -rf ./emacs-${VERSION}
 tar xvf ./emacs-$VERSION.tar.gz
 if [ ! -d "emacs-$VERSION" ]; then
     echo "missing emacs-$VERSION/"
     exit 1
 fi
-
 echo "---------------------------------"
 
 if [ "${PATCH}" = "inline" ]; then
@@ -68,7 +72,7 @@ if [ "${PATCH}" = "inline" ]; then
     git clone --depth 1 https://github.com/takaxp/ns-inline-patch.git
 
     cd emacs-${VERSION}
-    patch -p1 < ../ns-inline-patch/emacs-29.1-inline.patch
+    patch -p1 < ../ns-inline-patch/emacs-29.1-inline.patch # still work for emacs-30.x
     if [ $? -ne 0 ]; then echo "FAILED"; exit 1; fi
 
 elif [ "${PATCH}" = "pure" ]; then

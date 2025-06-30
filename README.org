@@ -1,12 +1,10 @@
 #+title: An enhanced inline patch for GNU Emacs
 
-[[https://github.com/takaxp/ns-inline-patch/actions?query=workflow%3A%22Build+NS+with+inline-patch+%28HEAD%29%22][https://github.com/takaxp/ns-inline-patch/workflows/Build%20NS%20with%20inline-patch%20(HEAD)/badge.svg]]
+[[https://github.com/takaxp/ns-inline-patch/actions/workflows/build-head.yml][https://github.com/takaxp/ns-inline-patch/actions/workflows/build-head.yml/badge.svg]]
+[[https://github.com/takaxp/ns-inline-patch/actions/workflows/nightly-arm64.yml][https://github.com/takaxp/ns-inline-patch/actions/workflows/nightly-arm64.yml/badge.svg]]
+[[https://github.com/takaxp/ns-inline-patch/actions/workflows/nightly-x86_64.yml][https://github.com/takaxp/ns-inline-patch/actions/workflows/nightly-x86_64.yml/badge.svg]]
 [[https://github.com/takaxp/ns-inline-patch/actions/workflows/release-latest_native.yml][https://github.com/takaxp/ns-inline-patch/actions/workflows/release-latest_native.yml/badge.svg]]
 [[https://github.com/takaxp/ns-inline-patch/actions/workflows/release-latest.yml][https://github.com/takaxp/ns-inline-patch/actions/workflows/release-latest.yml/badge.svg]]
-[[https://github.com/takaxp/ns-inline-patch/actions?query=workflow%3A%22Build+NS+with+inline-patch+%28emacs-29%29%22][https://github.com/takaxp/ns-inline-patch/workflows/Build%20NS%20with%20inline-patch%20(emacs-29)/badge.svg]]
-[[https://github.com/takaxp/ns-inline-patch/actions?query=workflow%3A%22Build+NS+with+inline-patch+%28emacs-28%29%22][https://github.com/takaxp/ns-inline-patch/workflows/Build%20NS%20with%20inline-patch%20(emacs-28)/badge.svg]]
-[[https://github.com/takaxp/ns-inline-patch/actions?query=workflow%3A%22Build+NS+with+inline-patch+%28emacs-27%29%22][https://github.com/takaxp/ns-inline-patch/workflows/Build%20NS%20with%20inline-patch%20(emacs-27)/badge.svg]]
-[[https://github.com/takaxp/ns-inline-patch/actions?query=workflow%3A%22Build+NS+with+inline-patch+%28emacs-26%29%22][https://github.com/takaxp/ns-inline-patch/workflows/Build%20NS%20with%20inline-patch%20(emacs-26)/badge.svg]]
 
 see https://qiita.com/takaxp/items/e07bb286d80fa9dd8e05 and https://qiita.com/takaxp/items/6a7f9b26eb1b1a8237a0
 
@@ -117,8 +115,8 @@ These packages are built based on the current development source code. So it may
 #+caption: HEAD(master) build with NativeComp
 | Chip  | Version | Download              | macOS   | md5                              |
 |-------+---------+-----------------------+---------+----------------------------------|
-| Apple | 31.0.50 | [[https://pxaka.tokyo/emacs/pkg/emacs-head_apple_nc.pkg][⬇pkg(NC)]] (13JUN2025) | Sonoma  | [[https://pxaka.tokyo/emacs/pkg/emacs-head_apple_nc.md5][3f0b7f79a0ff85c6d025b9089a373fbc]] |
-| Intel | 31.0.50 | [[https://pxaka.tokyo/emacs/pkg/emacs-head_intel_nc.pkg][⬇pkg(NC)]] (13JUN2025) | Ventura | [[https://pxaka.tokyo/emacs/pkg/emacs-head_intel_nc.md5][5531a4c83b4d0377c0e90a4fd7fd6987]] |
+| Apple | 31.0.50 | [[https://pxaka.tokyo/emacs/pkg/emacs-head_apple_nc.pkg][⬇pkg(NC)]] (20JUN2025) | Sonoma  | [[https://pxaka.tokyo/emacs/pkg/emacs-head_apple_nc.md5][a9d7b47fad0ac4be7a0c6f7e53db047c]] |
+| Intel | 31.0.50 | [[https://pxaka.tokyo/emacs/pkg/emacs-head_intel_nc.pkg][⬇pkg(NC)]] (20JUN2025) | Ventura | [[https://pxaka.tokyo/emacs/pkg/emacs-head_intel_nc.md5][9d486d7de82efd38f4ff41e103426b98]] |
 
 #+begin_quote
 [!IMPORTANT]
@@ -130,8 +128,8 @@ Following packages are built *without* NativeComp option.
 #+caption: HEAD(master)
 | Chip  | Version | Download          | macOS   | md5                              |
 |-------+---------+-------------------+---------+----------------------------------|
-| Apple | 31.0.50 | [[https://pxaka.tokyo/emacs/pkg/emacs-head_apple.pkg][⬇pkg]] (13JUN2025) | Sonoma  | [[https://pxaka.tokyo/emacs/pkg/emacs-head_apple.md5][71486d6a7c4d709bb1c875ece78610ac]] |
-| Intel | 31.0.50 | [[https://pxaka.tokyo/emacs/pkg/emacs-head_intel.pkg][⬇pkg]] (13JUN2025) | Ventura | [[https://pxaka.tokyo/emacs/pkg/emacs-head_intel.md5][14e1fb9cbbd0f9769c546e5f3370a4e0]] |
+| Apple | 31.0.50 | [[https://pxaka.tokyo/emacs/pkg/emacs-head_apple.pkg][⬇pkg]] (20JUN2025) | Sonoma  | [[https://pxaka.tokyo/emacs/pkg/emacs-head_apple.md5][283b3b252aa29698979109e4177bca48]] |
+| Intel | 31.0.50 | [[https://pxaka.tokyo/emacs/pkg/emacs-head_intel.pkg][⬇pkg]] (20JUN2025) | Ventura | [[https://pxaka.tokyo/emacs/pkg/emacs-head_intel.md5][dd559512892ec6f08520d3224808ee13]] |
 
 *** Emacs 30 (with inline patch)
 :PROPERTIES:

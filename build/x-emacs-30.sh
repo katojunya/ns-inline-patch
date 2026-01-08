@@ -55,8 +55,7 @@ echo "Cores: ${CORES}"
 echo "PATCH: ${PATCH}"
 
 if [ ! -f emacs-$VERSION.tar.gz ]; then
-    #curl -LO ftp://ftp.gnu.org/gnu/emacs/emacs-$VERSION.tar.gz
-    curl -LO ftp://ftp.iij.ad.jp/pub/gnu/emacs/emacs-$VERSION.tar.gz
+    curl -LO ftp://ftp.gnu.org/gnu/emacs/emacs-$VERSION.tar.gz
 fi
 #curl -LO ftp://ftp.gnu.org/gnu/emacs/emacs-$VERSION.tar.gz
 
@@ -74,6 +73,7 @@ if [ "${PATCH}" = "inline" ]; then
 
     cd emacs-${VERSION}
     patch -p1 < ../ns-inline-patch/emacs-29.1-inline.patch # still work for emacs-30.x
+    patch -p1 < ../ns-inline-patch/fix-emacs30-treesit.patch # exclude tree-sitter 0.26 or later
     if [ $? -ne 0 ]; then echo "FAILED"; exit 1; fi
 
 elif [ "${PATCH}" = "pure" ]; then
@@ -87,7 +87,7 @@ fi
 
 sleep 5
 ./autogen.sh
-./configure --without-x --with-ns --with-modules --with-jpeg=no --with-tiff=no --with-gif=no --with-png=no --with-lcms2=no --with-webp=no --with-rsvg=no --with-tree-sitter=no --with-native-compilation=${NATIVE} --without-compress-install
+./configure --without-x --with-ns --with-modules --with-jpeg=no --with-tiff=no --with-gif=no --with-png=no --with-lcms2=no --with-webp=no --with-rsvg=no --with-tree-sitter=no --with-native-compilation=${NATIVE}
 make bootstrap -j$CORES
 make install -j$CORES
 cd ./nextstep

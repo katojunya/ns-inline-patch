@@ -25,7 +25,6 @@ export CFLAGS="$CFLAGS -I${BREW_LIBGCCJIT_PREFIX}/include"
 export LIBRARY_PATH=${BREW_PREFIX}/lib/gcc/current
 
 WORKING_DIR="${HOME}/Desktop"
-CORES=4
 NATIVE="no"
 PATCH="inline"
 while getopts d:j:ngp: opt
@@ -68,6 +67,7 @@ if [ "${PATCH}" = "inline" ]; then
     git clone --depth 1 https://github.com/takaxp/ns-inline-patch.git
 
     cd emacs-${VERSION}
+    patch -p1 < ../ns-inline-patch/fix-emacs30-treesit.c.patch
     patch -p1 < ../ns-inline-patch/emacs-29.1-inline.patch
     if [ $? -ne 0 ]; then echo "FAILED"; exit 1; fi
 
@@ -82,7 +82,7 @@ fi
 
 sleep 5
 ./autogen.sh
-./configure --without-x --with-ns --with-modules --with-jpeg=no --with-tiff=no --with-gif=no --with-png=no --with-lcms2=no --with-webp=no --with-rsvg=no --with-tree-sitter=no --with-native-compilation=${NATIVE}
+./configure --without-x --with-ns --with-modules --with-jpeg=no --with-tiff=no --with-gif=no --with-png=no --with-lcms2=no --with-webp=no --with-rsvg=no --with-tree-sitter=yes --with-native-compilation=${NATIVE}
 make bootstrap -j$CORES
 make install -j$CORES
 cd ./nextstep

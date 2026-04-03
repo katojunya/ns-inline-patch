@@ -1,13 +1,11 @@
-name: "Nightly build for Apple Silicon"
+name: "Release v30.2 (arm64) with NativeComp"
 on:
   workflow_dispatch:
-  schedule:
-  - cron: '0 17 * * *'
 
 jobs:
-  nightly-arm64-latest:
+  release-30-native-arm64-latest:
     runs-on: macos-26
-    timeout-minutes: 120
+    timeout-minutes: 90
     steps:
     - name: Checkout repository
       uses: actions/checkout@v4
@@ -23,14 +21,17 @@ jobs:
         APPLE_ID: ${{ secrets.APPLE_ID }}
     - name: Setup to build
       run: sh build/setup.sh
-    - name: Build HEAD with inline patch
-      run: sh build/emacs-head.sh -d ${{ github.workspace }} -p inline -j4
+    - name: Build Emacs 30.2 with inline patch
+      run: |
+        mv ${{ github.workspace }}/.git ${{ github.workspace }}/_git
+        sh build/emacs-30.sh -d ${{ github.workspace }} -p inline -j4
+        mv ${{ github.workspace }}/_git ${{ github.workspace }}/.git
     - name: Verification
-      run: ${{ github.workspace }}/emacs/nextstep/Emacs.app/Contents/MacOS/Emacs --batch --eval="(unless (fboundp 'mac-input-method-mode) (error \"The inline-patch is NOT integrated\"))"
+      run: ${{ github.workspace }}/emacs-30.2/nextstep/Emacs.app/Contents/MacOS/Emacs --batch --eval="(unless (fboundp 'mac-input-method-mode) (error \"The inline-patch is NOT integrated\"))"
     - name: Portable
-      run: sh release/portable-emacs.sh -b master -d ${{ github.workspace }}
+      run: sh release/portable-emacs.sh -v 30.2 -d ${{ github.workspace }}
     - name: Notarize
-      run: sh release/notarize-emacs.sh -b master -d ${{ github.workspace }} -s ${{ github.workspace }} -p inline -a "github-emacs-build"
+      run: sh release/notarize-emacs.sh -v 30.2 -d ${{ github.workspace }} -s ${{ github.workspace }} -p inline -a "github-emacs-build"
     - name: Export
       uses: ./.github/actions/exporting
       env:
@@ -41,9 +42,9 @@ jobs:
       if: ${{ always() }}
       uses: ./.github/actions/cleanup
 
-  nightly-arm64-sequoia:
+  release-30-native-arm64-sequoia:
     runs-on: macos-15
-    timeout-minutes: 120
+    timeout-minutes: 60
     steps:
     - name: Checkout repository
       uses: actions/checkout@v4
@@ -59,14 +60,17 @@ jobs:
         APPLE_ID: ${{ secrets.APPLE_ID }}
     - name: Setup to build
       run: sh build/setup.sh
-    - name: Build HEAD with inline patch
-      run: sh build/emacs-head.sh -d ${{ github.workspace }} -p inline -j4
+    - name: Build Emacs 30.2 with inline patch
+      run: |
+        mv ${{ github.workspace }}/.git ${{ github.workspace }}/_git
+        sh build/emacs-30.sh -d ${{ github.workspace }} -p inline -j4
+        mv ${{ github.workspace }}/_git ${{ github.workspace }}/.git
     - name: Verification
-      run: ${{ github.workspace }}/emacs/nextstep/Emacs.app/Contents/MacOS/Emacs --batch --eval="(unless (fboundp 'mac-input-method-mode) (error \"The inline-patch is NOT integrated\"))"
+      run: ${{ github.workspace }}/emacs-30.2/nextstep/Emacs.app/Contents/MacOS/Emacs --batch --eval="(unless (fboundp 'mac-input-method-mode) (error \"The inline-patch is NOT integrated\"))"
     - name: Portable
-      run: sh release/portable-emacs.sh -b master -d ${{ github.workspace }}
+      run: sh release/portable-emacs.sh -v 30.2 -d ${{ github.workspace }}
     - name: Notarize
-      run: sh release/notarize-emacs.sh -b master -d ${{ github.workspace }} -s ${{ github.workspace }} -p inline -a "github-emacs-build" -m "15"
+      run: sh release/notarize-emacs.sh -v 30.2 -d ${{ github.workspace }} -s ${{ github.workspace }} -p inline -a "github-emacs-build" -m "15"
     - name: Export
       uses: ./.github/actions/exporting
       env:
@@ -77,9 +81,9 @@ jobs:
       if: ${{ always() }}
       uses: ./.github/actions/cleanup
 
-  nightly-arm64-sonoma:
+  release-30-native-arm64-sonoma:
     runs-on: macos-14
-    timeout-minutes: 120
+    timeout-minutes: 60
     steps:
     - name: Checkout repository
       uses: actions/checkout@v4
@@ -95,14 +99,17 @@ jobs:
         APPLE_ID: ${{ secrets.APPLE_ID }}
     - name: Setup to build
       run: sh build/setup.sh
-    - name: Build HEAD with inline patch
-      run: sh build/emacs-head.sh -d ${{ github.workspace }} -p inline -j4
+    - name: Build Emacs 30.2 with inline patch
+      run: |
+        mv ${{ github.workspace }}/.git ${{ github.workspace }}/_git
+        sh build/emacs-30.sh -d ${{ github.workspace }} -p inline -j4
+        mv ${{ github.workspace }}/_git ${{ github.workspace }}/.git
     - name: Verification
-      run: ${{ github.workspace }}/emacs/nextstep/Emacs.app/Contents/MacOS/Emacs --batch --eval="(unless (fboundp 'mac-input-method-mode) (error \"The inline-patch is NOT integrated\"))"
+      run: ${{ github.workspace }}/emacs-30.2/nextstep/Emacs.app/Contents/MacOS/Emacs --batch --eval="(unless (fboundp 'mac-input-method-mode) (error \"The inline-patch is NOT integrated\"))"
     - name: Portable
-      run: sh release/portable-emacs.sh -b master -d ${{ github.workspace }}
+      run: sh release/portable-emacs.sh -v 30.2 -d ${{ github.workspace }}
     - name: Notarize
-      run: sh release/notarize-emacs.sh -b master -d ${{ github.workspace }} -s ${{ github.workspace }} -p inline -a "github-emacs-build" -m "14"
+      run: sh release/notarize-emacs.sh -v 30.2 -d ${{ github.workspace }} -s ${{ github.workspace }} -p inline -a "github-emacs-build" -m "14"
     - name: Export
       uses: ./.github/actions/exporting
       env:

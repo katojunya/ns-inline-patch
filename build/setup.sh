@@ -15,15 +15,15 @@ function setup_homebrew () {
     echo "PREFIX:     $HOMEBREW_PREFIX"
     echo "CELLAR:     $HOMEBREW_CELLAR"
     echo "REPOSITORY: $HOMEBREW_REPOSITORY"
-    echo "PATH:     $PATH"
-    echo "MANPATH:  $MANPATH"
-    echo "INFOPATH: $INFOPATH"
+    echo "PATH:       $PATH"
+    echo "MANPATH:    $MANPATH"
+    echo "INFOPATH:   $INFOPATH"
 }
 
 function install_deps () {
     brew install autoconf automake pkg-config gnutls texinfo jansson
-    # Required to support NativeComp
-    brew install gcc libgccjit
+    # Required to support NativeComp and tree-sitter
+    brew install gcc libgccjit tree-sitter
 
     if [ $(uname -m) = "x86_64" ]; then
         echo "--- Hot fix for libgccjit 14.1 on x86_64"
@@ -44,9 +44,32 @@ function remove_homebrew () {
     /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/uninstall.sh)"
 }
 
+function print_gcc_env () {
+    BREW=$(which brew)
+    BREW_PREFIX=$($BREW --prefix)
+    BREW_LIBGCCJIT_PREFIX=$($BREW --prefix --installed libgccjit 2>/dev/null)
+    BREW_GCC_MAJOR=$(brew list --version gcc | sed -E 's/.* ([0-9]+)\..*/\1/')
+    if [ -f ${BREW_PREFIX}/bin/gcc-${BREW_GCC_MAJOR} ]; then
+       BREW_GCC_TRIPLET=$(${BREW_PREFIX}/bin/gcc-${BREW_GCC_MAJOR} -dumpmachine)
+    else
+        echo "Terminated!"
+        echo "--- ${BREW_PREFIX}/bin/gcc-${BREW_GCC_MAJOR} is not installed"
+        echo "install Homebrew, then run \"brew install gcc libgccjit.\""
+        exit
+    fi
+    echo "--- GCC ENV"
+    echo "BREW:                  ${BREW}"
+    echo "BREW_LIBGCCJIT_PREFIX: ${BREW_LIBGCCJIT_PREFIX}"
+    echo "BREW_GCC_MAJOR:        ${BREW_GCC_MAJOR}"
+    echo "BREW_GCC_TRIPLET:      ${BREW_GCC_TRIPLET}"
+}
+
 setup_homebrew
 install_tool
 install_deps
+print_gcc_env
+echo "--- SDK PATH"
+xcrun --show-sdk-path
 # install_xcode
 # remove_homebrew
 

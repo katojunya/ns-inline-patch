@@ -95,7 +95,7 @@ fi
 
 sleep 5
 ./autogen.sh
-./configure --without-x --with-ns --with-modules --with-jpeg=no --with-tiff=no --with-gif=no --with-png=no --with-lcms2=no --with-webp=no --with-rsvg=no --with-tree-sitter=yes --with-native-compilation=${NATIVE}
+./configure gl_cv_func_pipe2=no ac_cv_func_pipe2=no --with-dbus=no --without-x --with-ns --with-modules --with-jpeg=no --with-tiff=no --with-gif=no --with-png=no --with-lcms2=no --with-webp=no --with-rsvg=no --with-tree-sitter=yes --with-native-compilation=${NATIVE}
 make bootstrap -j$CORES
 make install -j$CORES
 cd ./nextstep

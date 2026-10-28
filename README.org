@@ -270,7 +270,6 @@ Please read [[https://github.com/takaxp/ns-inline-patch?tab=readme-ov-file#using
 - with NativeComp
 | Version | Chip  | macOS          | :link:    |       Date | md5                              |
 |---------+-------+----------------+-----------+------------+----------------------------------|
-| 32.0.50 | Apple | Sonoma (14)    | [[https://pxaka.tokyo/emacs/pkg/archive/14-sonoma/emacs-head_apple_nc-14.pkg][:package:]] | 2026-10-02 | [[https://pxaka.tokyo/emacs/pkg/archive/14-sonoma/emacs-head_apple_nc-14.md5][5041298229fdef561b0b932f43de0409]] |
 |    31.1 | Apple | Sonoma (14)    | [[https://pxaka.tokyo/emacs/pkg/archive/14-sonoma/emacs-31.1_apple_nc-14.pkg][:package:]] | 2026-08-25 | [[https://pxaka.tokyo/emacs/pkg/archive/14-sonoma/emacs-31.1_apple_nc-14.md5][c2addec864403ff4648e452a7519caed]] |
 |    30.2 | Apple | Sonoma (14)    | [[https://pxaka.tokyo/emacs/pkg/archive/14-sonoma/emacs-30.2_apple_nc-14.pkg][:package:]] | 2026-08-25 | [[https://pxaka.tokyo/emacs/pkg/archive/14-sonoma/emacs-30.2_apple_nc-14.md5][18d94f2ea86a166687bf35b3cf419f0b]] |
 |    29.4 | Apple | Sonoma (14)    | [[https://pxaka.tokyo/emacs/pkg/archive/14-sonoma/emacs-29.4_apple_nc-14.pkg][:package:]] | 2026-08-25 | [[https://pxaka.tokyo/emacs/pkg/archive/14-sonoma/emacs-29.4_apple_nc-14.md5][50ea74196883b70772140ba597c6ad11]] |

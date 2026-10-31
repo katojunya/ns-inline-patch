@@ -121,10 +121,10 @@ These packages are built based on the latest development source code. So it may 
 #+caption: Emacs 32.0.50 HEAD of Master branch (*with* NativeComp)
 | Version | Chip  | macOS          | :link:    |       Date | md5                              |
 |---------+-------+----------------+-----------+------------+----------------------------------|
-| 32.0.50 | Apple | Tahoe or later | [[https://pxaka.tokyo/emacs/pkg/emacs-head_apple_nc.pkg][:package:]] | 2026-10-02 | [[https://pxaka.tokyo/emacs/pkg/emacs-head_apple_nc.md5][b15beddd49866cdc6112bf7b62a7894f]] |
-| 32.0.50 | Apple | Sequoia (15)   | [[https://pxaka.tokyo/emacs/pkg/emacs-head_apple_nc-15.pkg][:package:]] | 2026-10-02 | [[https://pxaka.tokyo/emacs/pkg/emacs-head_apple_nc-15.md5][e16ae265feffb9f3c1dd5d906cc63c07]] |
-| 32.0.50 | Intel | Tahoe or later | [[https://pxaka.tokyo/emacs/pkg/emacs-head_intel_nc.pkg][:package:]] | 2026-10-02 | [[https://pxaka.tokyo/emacs/pkg/emacs-head_intel_nc.md5][30d543827370635a2a77c7221596761a]] |
-| 32.0.50 | Intel | Sequoia (15)   | [[https://pxaka.tokyo/emacs/pkg/emacs-head_intel_nc-15.pkg][:package:]] | 2026-10-02 | [[https://pxaka.tokyo/emacs/pkg/emacs-head_intel_nc-15.md5][8e68093502dd5d8423ecd229ef18fb7b]] |
+| 32.0.50 | Apple | Tahoe or later | [[https://pxaka.tokyo/emacs/pkg/emacs-head_apple_nc.pkg][:package:]] | 2026-10-31 | [[https://pxaka.tokyo/emacs/pkg/emacs-head_apple_nc.md5][77120f4f43ddce17bded2153afddc760]] |
+| 32.0.50 | Apple | Sequoia (15)   | [[https://pxaka.tokyo/emacs/pkg/emacs-head_apple_nc-15.pkg][:package:]] | 2026-10-31 | [[https://pxaka.tokyo/emacs/pkg/emacs-head_apple_nc-15.md5][5b6a9c75682ab522499ca87d9779d446]] |
+| 32.0.50 | Intel | Tahoe or later | [[https://pxaka.tokyo/emacs/pkg/emacs-head_intel_nc.pkg][:package:]] | 2026-10-31 | [[https://pxaka.tokyo/emacs/pkg/emacs-head_intel_nc.md5][5f34809cd5c3c61fe5171e7052836ab6]] |
+| 32.0.50 | Intel | Sequoia (15)   | [[https://pxaka.tokyo/emacs/pkg/emacs-head_intel_nc-15.pkg][:package:]] | 2026-10-31 | [[https://pxaka.tokyo/emacs/pkg/emacs-head_intel_nc-15.md5][ed1db11c70434ed6cf675c391e2044f1]] |
 
 #+begin_quote
 [!IMPORTANT]

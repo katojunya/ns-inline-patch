@@ -5,6 +5,7 @@ MACSDK=`xcrun --show-sdk-path`
 export LIBXML2_CFLAGS="-I${MACSDK}/usr/include/libxml2"
 export LIBXML2_LIBS="-lxml2"
 export PATH="/usr/local/opt/texinfo/bin:$PATH"
+export MIRROR="https://ftp.jaist.ac.jp/pub/GNU/emacs"
 
 export WORKING_DIR="${HOME}/Desktop"
 PATCH=inline
@@ -27,7 +28,7 @@ cd ${WORKING_DIR}
 mkdir emacs_ns
 cd emacs_ns
 VERSION=26.3
-curl -LOk https://ftp.gnu.org/gnu/emacs/emacs-$VERSION.tar.gz
+curl -LOk ${MIRROR}/emacs-$VERSION.tar.gz
 if [ "${PATCH}" = "inline" ]; then
     git clone --depth 1 https://github.com/takaxp/ns-inline-patch.git
     tar zxvf emacs-$VERSION.tar.gz

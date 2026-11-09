@@ -6,6 +6,7 @@ VERSION=27.2
 MACSDK=`xcrun --show-sdk-path`
 export LIBXML2_CFLAGS="-I${MACSDK}/usr/include/libxml2"
 export LIBXML2_LIBS="-lxml2"
+export MIRROR="https://ftp.jaist.ac.jp/pub/GNU/emacs"
 
 export WORKING_DIR="${HOME}/Desktop"
 
@@ -30,7 +31,7 @@ cd ${WORKING_DIR}
 # if [ ! -f emacs-$VERSION.tar.gz ]; then
 #     curl -LO ftp://ftp.gnu.org/gnu/emacs/emacs-$VERSION.tar.gz
 # fi
-curl -LO ftp://ftp.gnu.org/gnu/emacs/emacs-$VERSION.tar.gz
+curl -LO ${MIRROR}/emacs-$VERSION.tar.gz
 
 rm -rf ./emacs-${VERSION}
 tar xvf ./emacs-$VERSION.tar.gz

@@ -6,6 +6,7 @@ VERSION=29.4
 MACSDK=`xcrun --show-sdk-path`
 export LIBXML2_CFLAGS="-I${MACSDK}/usr/include/libxml2"
 export LIBXML2_LIBS="-lxml2"
+export MIRROR="https://ftp.jaist.ac.jp/pub/GNU/emacs"
 
 # For Apple Silicon, Emacs version 27.2 or later supports to build.
 CPUARC=`uname -m`
@@ -53,7 +54,7 @@ echo "NativeComp: ${NATIVE}"
 echo "Cores: ${CORES}"
 echo "PATCH: ${PATCH}"
 
-curl -LO ftp://ftp.gnu.org/gnu/emacs/emacs-$VERSION.tar.gz
+curl -LO ${MIRROR}/emacs-$VERSION.tar.gz
 tar xvf ./emacs-$VERSION.tar.gz
 if [ ! -d "emacs-$VERSION" ]; then
     echo "missing emacs-$VERSION/"
